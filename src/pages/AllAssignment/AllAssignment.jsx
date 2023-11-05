@@ -11,11 +11,15 @@ const AllAssignment = () => {
     const dropdownValues = ['Easy', 'Medium', 'Hard'];
     const [filter, setFilter] = useState('');
     const handleDropdownChange = e => {
-        setFilter(e.target.value);
-        console.log(filter)
-        axios.get(`http://localhost:5000/assignment/${filter}`)
-        .then(res=>setAllAssignment(res.data))
+        e.preventDefault()
+        setFilter(e.target.value); 
     }
+    const url= `http://localhost:5000/assignment/${filter}`
+    useEffect(()=>{
+        axios.get(url)
+        .then(res=>setAllAssignment(res.data))
+        .catch(err=> console.log(err))
+    },[url])
     return (
         <div className="space-y-7">
             <div className="flex gap-5">

@@ -13,9 +13,9 @@ const CreateAssignment = () => {
     const [selectedValue, setSelectedValue] = useState('');
     const handleDropdownChange=e=>{
         setSelectedValue(e.target.value);
-        
 
     }
+    console.log(selectedValue)
     const handleAddAssignment = e => {
         e.preventDefault()
         const form= e.target
@@ -69,7 +69,7 @@ const CreateAssignment = () => {
                                     <span className="label-text ">Difficulty Level</span>
                                 </label>
                                 <select className="input input-bordered w-full" value={selectedValue} onChange={handleDropdownChange}>
-                                    
+                                  
                                     {dropdownValues.map((value, index) => (
                                         <option key={index} value={value}>
                                             {value}
