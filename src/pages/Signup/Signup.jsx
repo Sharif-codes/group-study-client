@@ -1,24 +1,39 @@
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
+import { getAuth, updateProfile } from "firebase/auth";
 
+import { Link } from "react-router-dom";
+import app from "../../../firebase.config";
 
+const auth= getAuth(app)
 const Signup = () => {
     const {createUser}= useContext(AuthContext)
     const handleSignup= e=>{
         e.preventDefault()
-        const toastId= toast.loading('Logging in')
+        const toastId= toast.loading('Regestration on progress')
         const form= e.target
+        const displayName = form.displayName.value
+        const photoURL = form.photoURL.value
         const email= form.email.value
         const password= form.password.value
-        console.log(email,password)
-        try{
+        console.log(email,password,displayName,photoURL)
+      
             createUser(email,password)
-            toast.success('user registered successfully',{id: toastId})
-        }
-        catch(err){
+            .then(res=>{
+                console.log(res.user)
+                updateProfile(auth.currentUser, {
+                    displayName: displayName , photoURL: photoURL
+                  }).then((result) => {
+                    console.log(result)
+                  }).catch((error) => {
+                    console.log(error)
+                  });
+                  toast.success('user registered successfully',{id: toastId})
+            })
+            .catch(err=>{
             toast.error(err.message, {id: toastId})
-        }
+        })
 
     }
     return (
@@ -26,6 +41,18 @@ const Signup = () => {
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleSignup} className="card-body">
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input type="text" name="displayName" placeholder="Your Name" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Photo URL</span>
+                            </label>
+                            <input type="text" name="photoURL" placeholder="Your Photo URL" className="input input-bordered" required />
+                        </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -42,8 +69,10 @@ const Signup = () => {
                         <div className="form-control mt-6">
                             <button type="submit" className="btn btn-primary">Sign Up</button>
                         </div>
+                        <p>Already have an account?</p> <Link to='/login' className="text-purple-800">Login now</Link>
                     </form>
                 </div>
+              
             </div>
         </div>
     );

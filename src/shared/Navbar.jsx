@@ -1,10 +1,13 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
+import { Tooltip } from "@mui/material";
 
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
+    const [isHover, setIsHover] = useState(false)
+    console.log(user)
     const handleLogout = () => {
         logOut()
     }
@@ -49,7 +52,7 @@ const Navbar = () => {
                                 isPending ? "pending" : isActive ? "active text-green-500" : ""
                             }
                         >
-                           <li><a>Assignments</a></li>
+                            <li><a>Assignments</a></li>
                         </NavLink>
                         <NavLink
                             to="/login"
@@ -57,7 +60,7 @@ const Navbar = () => {
                                 isPending ? "pending" : isActive ? "active text-green-500" : ""
                             }
                         >
-                           <li><a href="">Login</a></li>
+                            <li><a href="">Login</a></li>
                         </NavLink>
                         <NavLink
                             to="/signup"
@@ -65,7 +68,7 @@ const Navbar = () => {
                                 isPending ? "pending" : isActive ? "active text-green-500" : ""
                             }
                         >
-                           <li><a href="">Register</a></li>
+                            <li><a href="">Register</a></li>
                         </NavLink>
                     </ul>
                 </div>
@@ -76,36 +79,43 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal px-1">
                     {user && NavItem}
                     <NavLink
-                            to="/all-assignments"
-                            className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "active text-green-500" : ""
-                            }
-                        >
-                           <li><a>Assignments</a></li>
-                        </NavLink>
-                        <NavLink
-                            to="/login"
-                            className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "active text-green-500" : ""
-                            }
-                        >
-                           <li><a href="">Login</a></li>
-                        </NavLink>
-                        <NavLink
-                            to="/signup"
-                            className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "active text-green-500" : ""
-                            }
-                        >
-                           <li><a href="">Register</a></li>
-                        </NavLink>
+                        to="/all-assignments"
+                        className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "active text-green-500" : ""
+                        }
+                    >
+                        <li><a>Assignments</a></li>
+                    </NavLink>
+                    <NavLink
+                        to="/login"
+                        className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "active text-green-500" : ""
+                        }
+                    >
+                        <li><a href="">Login</a></li>
+                    </NavLink>
+                    <NavLink
+                        to="/signup"
+                        className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "active text-green-500" : ""
+                        }
+                    >
+                        <li><a href="">Register</a></li>
+                    </NavLink>
                 </ul>
             </div>
-            <div className="navbar-end flex">
+            <div className="navbar-end flex space-x-5 mx-auto">
                 <div>
                     {
-                        user && <p>Login as: <span className="font-semibold text-blue-800 mr-2">{user.email}</span></p>
+                        user && <div className="w-12 mx-auto rounded-full">
+                            <Tooltip title={user.displayName} disableInteractive>
+                            <img className="w-full rounded-full" src={user.photoURL} alt="" />
+                            </Tooltip>
+                            
+                        </div>
+
                     }
+                   
 
                 </div>
                 <div>

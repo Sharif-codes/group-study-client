@@ -1,17 +1,23 @@
 import { useContext } from "react";
 import toast from "react-hot-toast";
+import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import app from "../../../firebase.config";
 
 const Login = () => {
     const { login } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
+    const auth = getAuth(app)
+    const provider = new GoogleAuthProvider(app);
     const handleLogin = e => {
         e.preventDefault()
         const toastId = toast.loading('Logging in')
         const form = e.target
+        
         const email = form.email.value
         const password = form.password.value
         console.log(email, password)
@@ -30,13 +36,28 @@ const Login = () => {
                             }
                         })
                 })
+                .catch(err=>{
+                    toast.error(err.message, { id: toastId })
+                })
             
         }
         catch (err) {
-            toast.error(err.message, { id: toastId })
+            
             console.log(err)
 
         }
+    }
+    const handleGoogleLogin = () => {
+        signInWithPopup(auth, provider)
+            .then(result => {
+                console.log(result)
+                navigate(location?.state ? location.state : '/')
+                
+            })
+            .catch(err => {
+                console.log(err)
+               
+            })
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -59,7 +80,12 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <button type="submit" className="btn btn-primary">Login</button>
                         </div>
+                        <p>Dont have account?</p> <Link to='/signup' className="text-purple-800">Sign up</Link>
                     </form>
+                    <button onClick={handleGoogleLogin} className="btn btn-outline mx-auto w-1/2 mb-4">
+                            <FaGoogle></FaGoogle>
+                            Google
+                        </button>
                 </div>
             </div>
         </div>
