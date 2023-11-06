@@ -8,7 +8,7 @@ const Home = () => {
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                    <p className="mb-5">Welcomr to our Study group website.</p>
+                    <p className="mb-5">Welcome to our Study group website.</p>
                     <button className="btn btn-secondary">Explore more</button>
                 </div>
             </div>
@@ -18,28 +18,28 @@ const Home = () => {
         <div className="collapse collapse-arrow bg-base-200">
             <input type="radio" name="my-accordion-2" checked="checked" />
             <div className="collapse-title text-xl font-medium">
-                What you sell?
+                who we are?
             </div>
             <div className="collapse-content">
-                <p>We sell Electronic and Technological products of best brands around the world</p>
+                <p>We are your friends. Here we share our knowledge to enhance our potential!</p>
             </div>
         </div>
         <div className="collapse collapse-arrow bg-base-200">
             <input type="radio" name="my-accordion-2" />
             <div className="collapse-title text-xl font-medium">
-                Home Delivery Available?
+                How I can submit my assignment?
             </div>
             <div className="collapse-content">
-                <p>Yes, We ensure you!</p>
+                <p>Follow the simple steps!</p>
             </div>
         </div>
         <div className="collapse collapse-arrow bg-base-200">
             <input type="radio" name="my-accordion-2" />
             <div className="collapse-title text-xl font-medium">
-                What is the service charge for home delivery?
+                Is there any suggestions published examnight?
             </div>
             <div className="collapse-content">
-                <p>2$ per KG</p>
+                <p>Ofcourse! you will get</p>
             </div>
         </div>
     </section>
