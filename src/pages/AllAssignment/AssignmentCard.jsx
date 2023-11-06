@@ -17,7 +17,7 @@ const AssignmentCard = ({assignments}) => {
                     <div className="flex gap-5">
                         <Link to={`/single-assignment/${_id}`}><button className="btn btn-accent">View </button></Link>
                         
-                        <button className="btn btn-secondary">Update</button>
+                       <Link to={`/update-assignment/${_id}`}><button className="btn btn-secondary">Update</button></Link> 
                     </div>
                 </div>
             </div>
