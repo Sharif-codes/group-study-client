@@ -1,8 +1,9 @@
-import axios from "axios";
+
 import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 
 
@@ -34,9 +35,22 @@ const SingleAssignment = () => {
         e.preventDefault()
         const form = e.target
         const pdf= form.pdf.value
-        const note= form.pdf.value
-        const data= {pdf, note}
+        const note= form.note.value
+        const examineeName= user.displayName
+        const examineeEmail= user.email
+        const status= "pending"
+
+        const data= {pdf, note, examineeEmail,examineeName,status,title,assignmentMark:mark}
         console.log('asignment data: ', data)
+
+        axios.post('http://localhost:5000/submit-assignment',data)
+         .then(res=> {
+            console.log(res.data)
+            toast.success("Assignment Added Successfully!")
+        })
+        .catch(err=> {
+            toast.error(err.message)
+            console.log(err.message)})
     }
 
     return (
