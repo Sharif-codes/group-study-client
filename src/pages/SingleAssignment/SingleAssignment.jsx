@@ -1,6 +1,6 @@
 
 import { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -8,6 +8,7 @@ import axios from "axios";
 
 
 const SingleAssignment = () => {
+    const navigate=useNavigate()
     const { user } = useContext(AuthContext)
     const singleAssignment = useLoaderData()
     const [assignment, setAssignment] = useState(singleAssignment)
@@ -46,7 +47,8 @@ const SingleAssignment = () => {
         axios.post('http://localhost:5000/submit-assignment',data)
          .then(res=> {
             console.log(res.data)
-            toast.success("Assignment Added Successfully!")
+            toast.success("Assignment submitted Successfully!")
+            navigate('/all-assignments')
         })
         .catch(err=> {
             toast.error(err.message)
