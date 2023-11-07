@@ -20,15 +20,23 @@ const SingleAssignment = () => {
 
                 toast.success(res.data.message)
                 setAssignment('')
-         
-               
+
+
             })
             .catch(err => {
                 toast.error(err.response.data.message)
 
             })
-           
 
+
+    }
+    const handleSubmit = e => {
+        e.preventDefault()
+        const form = e.target
+        const pdf= form.pdf.value
+        const note= form.pdf.value
+        const data= {pdf, note}
+        console.log('asignment data: ', data)
     }
 
     return (
@@ -45,9 +53,32 @@ const SingleAssignment = () => {
                             <p>Difficulty Level: <span className="font-semibold">{difficulty}</span></p>
                             <p>Marks: <span className="font-semibold">{mark}</span> </p>
                             <p>Due: <span className="font-semibold">{due}</span></p>
-                            <p>Created By: <span className="font-semibold">{createdBy}</span></p>
+                            <p>Mail Creator: <span className="font-semibold">{createdBy}</span></p>
                             <div className="flex gap-3 pt-5">
-                                <button className="btn btn-primary">Take Assignment</button>
+                                <button className="btn btn-primary" onClick={() => document.getElementById('my_modal_3').showModal()}>Take Assignment</button>
+                                <dialog id="my_modal_3" className="modal">
+                                    <div className="modal-box">
+                                        <form method="dialog">
+                                            {/* if there is a button in form, it will close the modal */}
+                                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                        </form>
+                                        {/* submit pdf abd note of the exanineee */}
+
+                                        <div className="mx-auto flex justify-center">
+                                            <form onSubmit={handleSubmit}>
+                                                <h3 className="font-bold text-lg py-2">PDF Link</h3>
+                                                <input type="text" name="pdf" placeholder="Add the Pdf link.." className="input input-bordered input-secondary w-full max-w-xs" />
+                                                <p className="py-2 font-bold text-lg">Add Quick note</p>
+                                                <input type="text" name="note" placeholder="Type quick note.." className="input input-bordered input-secondary w-full max-w-xs" />
+                                                <input className="btn btn-success text-white mt-5" type="submit" value="submit" />
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </dialog>
+
+
+
                                 <button onClick={handleDelete} className="btn btn-secondary">Delete Assignment</button>
                             </div>
 
