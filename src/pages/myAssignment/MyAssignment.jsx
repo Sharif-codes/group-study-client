@@ -13,11 +13,6 @@ const MyAssignment = () => {
         .then(res=> setAssignment(res.data))
         .catch(err=> console.error(err))
     })
-  
-
-    const handleConfirmBooking= id=>{
-
-    }
     return (
         <div>
              <h2 className="text-center text-3xl font-semibold my-10">My Total Submission: <span className="text-purple-800"> {assignments.length}</span></h2>
@@ -25,7 +20,7 @@ const MyAssignment = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className="text-lg">
                             <th>Assignment Title</th>
                             <th>Status</th>
                             <th>Assignment Mark</th>
@@ -38,7 +33,7 @@ const MyAssignment = () => {
                             assignments?.map(item => <MyAssignmentRows
                              key={item._id}
                              assignment={item}
-                             handleConfirmBooking={handleConfirmBooking}></MyAssignmentRows> )
+                            ></MyAssignmentRows> )
                         }
                     </tbody>
                 </table>

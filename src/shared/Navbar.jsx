@@ -52,7 +52,7 @@ const Navbar = () => {
                                 isPending ? "pending" : isActive ? "active text-green-500" : ""
                             }
                         >
-                            <li><a>Assignments</a></li>
+                            <li><a>All Assignments</a></li>
                         </NavLink>
                         <NavLink
                             to="/login"
@@ -84,7 +84,7 @@ const Navbar = () => {
                             isPending ? "pending" : isActive ? "active text-green-500" : ""
                         }
                     >
-                        <li><a>Assignments</a></li>
+                        <li><a>All Assignments</a></li>
                     </NavLink>
                     <NavLink
                         to="/login"
