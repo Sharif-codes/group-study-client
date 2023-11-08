@@ -41,7 +41,8 @@ const router = createBrowserRouter([
             {
                 path: '/all-assignments',
                 element: <AllAssignment></AllAssignment>,
-                loader: ()=> fetch('https://group-study-server-rho.vercel.app/get-assignment')
+                // loader: ()=> fetch('https://group-study-server-rho.vercel.app/get-assignment')
+                
             },
             {
                 path: '/single-assignment/:id',

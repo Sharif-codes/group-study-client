@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const AllAssignment = () => {
-    const assignment = useLoaderData()
-    const [allAssignment, setAllAssignment] = useState(assignment)
+    // const assignment = useLoaderData()
+    const [allAssignment, setAllAssignment] = useState([])
     const [countItem, setCountItem]= useState(0)
     const [itemsPerPage, setItemsPerPage] = useState(6)
     const [currentPage, setCurrentPage] = useState(0)
 
-    const count = allAssignment.length
+    const count = countItem.count
     console.log(count)
     const numberOfPages = Math.ceil(count / itemsPerPage)
     const pages = [...Array(numberOfPages).keys()]
@@ -22,6 +22,15 @@ const AllAssignment = () => {
         e.preventDefault()
         setFilter(e.target.value);
     }
+
+    useEffect(()=>{
+        axios.get(`https://group-study-server-rho.vercel.app/get-assignment?pages=${currentPage}&size=${itemsPerPage}`)
+        .then(res=> setAllAssignment(res.data))
+        .catch(err=> console.log(err))
+        
+
+    },[currentPage,itemsPerPage])
+
     const url = `https://group-study-server-rho.vercel.app/assignment/${filter}`
     useEffect(() => {
         axios.get(url)
@@ -29,11 +38,11 @@ const AllAssignment = () => {
             .catch(err => console.log(err))
     }, [url])
 
-    // useEffect(() => {
-    //     axios.get('http://localhost:5000/assignment-count')
-    //     .then(res=> setCountItem(res.data) )
-    //     .catch(err=> console.log(err))
-    // }, [])
+    useEffect(() => {
+        axios.get('https://group-study-server-rho.vercel.app/assignment-count')
+        .then(res=> setCountItem(res.data) )
+        .catch(err=> console.log(err))
+    }, [])
     const handleItemPerPage = e => {
         const value = parseInt(e.target.value)
         setItemsPerPage(value)
