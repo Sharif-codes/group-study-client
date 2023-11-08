@@ -47,7 +47,7 @@ const GiveMark = () => {
                 <div className="my-2">
                     <p className="text-center font-semibold text-lg ">Answer Script:</p>
                     <div>
-                        <nav>
+                        {/* <nav>
                             <button onClick={goToPrevPage}>Prev</button>
                             <button onClick={goToNextPage}>Next</button>
                         </nav>
@@ -60,7 +60,7 @@ const GiveMark = () => {
 
                         <p>
                             Page {pageNumber} of {numPages}
-                        </p>
+                        </p> */}
                         <iframe
                             title="PDF Viewer"
                             src={pdf}

@@ -27,14 +27,15 @@ const Login = () => {
                 .then(res => {
                     toast.success('user logged in successfully', { id: toastId })
                     console.log(res)
-                    const user = { email }
-                    axios.post('https://group-study-server-rho.vercel.app/jwt', user, { withCredentials: true })
-                        .then(res => {
-                            console.log(res.data)
-                            if (res.data.success) {
-                                navigate(location?.state ? location?.state : '/')
-                            }
-                        })
+                    navigate(location?.state ? location?.state : '/')
+                    // const user = { email }
+                    // axios.post('https://group-study-server-rho.vercel.app/jwt', user, { withCredentials: true })
+                    //     .then(res => {
+                    //         console.log(res.data)
+                    //         if (res.data.success) {
+                               
+                    //         }
+                    //     })
                 })
                 .catch(err=>{
                     toast.error(err.message, { id: toastId })

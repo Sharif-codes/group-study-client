@@ -72,7 +72,11 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <Link to='/' className="flex items-center gap-3"><span className="text-lg md:text-3xl font-bold text-red-500">Group Study</span></Link>
+                <Link to='/' className="flex items-center gap-3"><div className="flex items-center gap-3">
+                    <img className="w-[80px]" src="/public/study-group-logo-free-vector.jpg" alt="" /> 
+                    <p className="text-2xl font-bold text-secondary-focus hidden md:block">Group Study</p>
+                    </div>
+                    </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -108,13 +112,13 @@ const Navbar = () => {
                     {
                         user && <div className="w-12 mx-auto rounded-full">
                             <Tooltip title={user.displayName} disableInteractive>
-                            <img className="w-full rounded-full" src={user.photoURL} alt="" />
+                                <img className="w-full rounded-full" src={user.photoURL} alt="" />
                             </Tooltip>
-                            
+
                         </div>
 
                     }
-                   
+
 
                 </div>
                 <div>

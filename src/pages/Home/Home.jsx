@@ -19,9 +19,9 @@ const Home = () => {
             </div>
             <section className="my-10">
                 <p className="text-4xl text-pink-700 font-bold pb-10">Features</p>
-            <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                 {
-                    feature.map(item=> <FeatureCard key={item.id} feature={item}></FeatureCard> )
+                    feature?.map(item=> <FeatureCard key={item.id} feature={item}></FeatureCard> )
                 }
             </div>
             </section>
