@@ -48,13 +48,13 @@ const CreateAssignment = () => {
                                 <label className="label">
                                     <span className="label-text ">Title</span>
                                 </label>
-                                <input type="text" name="title" placeholder="Assignment Title" className="input input-bordered w-full" />
+                                <input type="text" name="title" placeholder="Assignment Title" className="input input-bordered w-full" required/>
                             </div>
                             <div className="form-control w-1/2">
                                 <label className="label">
                                     <span className="label-text ">Description</span>
                                 </label>
-                                <input type="text" name="description" placeholder="Description" className="input input-bordered w-full" />
+                                <input type="text" name="description" placeholder="Description" className="input input-bordered w-full" required/>
                             </div>
                         </div>
                         <div className="flex gap-4  w-full">
@@ -62,13 +62,13 @@ const CreateAssignment = () => {
                                 <label className="label">
                                     <span className="label-text ">Thumbnail URL</span>
                                 </label>
-                                <input type="text" name="thumbnail" placeholder="Enter URL" className="input input-bordered w-full" />
+                                <input type="text" name="thumbnail" placeholder="Enter URL" className="input input-bordered w-full" required/>
                             </div>
                             <div className="form-control w-1/2">
                                 <label className="label">
                                     <span className="label-text ">Difficulty Level</span>
                                 </label>
-                                <select className="input input-bordered w-full" value={selectedValue} onChange={handleDropdownChange}>
+                                <select className="input input-bordered w-full" value={selectedValue} onChange={handleDropdownChange} required>
                                 <option>Select Difficulty Level</option>
                                     {dropdownValues.map((value, index) => (
                                        
@@ -84,18 +84,18 @@ const CreateAssignment = () => {
                                 <label className="label">
                                     <span className="label-text ">Marks</span>
                                 </label>
-                                <input type="number" name="marks" placeholder="Assignment Marks" className="input input-bordered w-full" />
+                                <input type="number" name="marks" placeholder="Assignment Marks" className="input input-bordered w-full" required />
                             </div>
                             <div className="form-control w-1/2">
                                 <label className="label">
                                     <span className="label-text ">Due Date</span>
                                 </label>
-                                <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className="input input-bordered w-full" />
+                                <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className="input input-bordered w-full" required/>
                             </div>
                         </div>
 
 
-                        <input className="btn btn-block bg-[#D2B48C]" type="submit" value="Add Assignment" />
+                        <input className="btn btn-block btn-success" type="submit" value="Add Assignment" />
                     </div>
 
                 </form>

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 import { getAuth, updateProfile } from "firebase/auth";
@@ -10,15 +10,39 @@ const auth= getAuth(app)
 const Signup = () => {
     const navigate=useNavigate()
     const {createUser}= useContext(AuthContext)
+
+    const [regError, setRegError] = useState('')
+    const [passError, setPassError]= useState('')
+    const [specialCharError, setSpecialCharError]= useState('')
+    const specialChars = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/;
+    const capital= /[A-Z]/;
+
     const handleSignup= e=>{
         e.preventDefault()
-        const toastId= toast.loading('Regestration on progress')
+        setRegError('')
+        setPassError('')
+        setSpecialCharError('')
         const form= e.target
         const displayName = form.displayName.value
         const photoURL = form.photoURL.value
         const email= form.email.value
         const password= form.password.value
         console.log(email,password,displayName,photoURL)
+        if(password.length<6)
+        {
+            setPassError('password must be longer than 6')
+            return;
+        }
+        if(!specialChars.test(password))
+        {
+            setSpecialCharError("Password must contain a special character ")
+            return;
+        }
+        if(!capital.test(password))
+        {
+            setSpecialCharError("Password must contain a capital character ")
+            return;
+        }
       
             createUser(email,password)
             .then(res=>{
@@ -30,11 +54,11 @@ const Signup = () => {
                   }).catch((error) => {
                     console.log(error)
                   });
-                  toast.success('user registered successfully',{id: toastId})
+                  toast.success('user registered successfully')
                   navigate('/')
             })
             .catch(err=>{
-            toast.error(err.message, {id: toastId})
+            toast.error(err.message)
         })
 
     }
@@ -71,6 +95,17 @@ const Signup = () => {
                         <div className="form-control mt-6">
                             <button type="submit" className="btn btn-primary">Sign Up</button>
                         </div>
+                        
+                            {
+                                regError && <p className="text-red-600 text-center">{regError}</p>
+                            }
+                            {
+                                passError && <p className="text-red-600 text-center">{passError}</p>
+                            }
+                            {
+                                specialCharError && <p className="text-red-600 text-center">{specialCharError}</p>
+                            }
+                        
                         <p>Already have an account?</p> <Link to='/login' className="text-purple-800">Login now</Link>
                     </form>
                 </div>

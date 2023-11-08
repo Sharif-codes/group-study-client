@@ -14,9 +14,9 @@ const AllAssignment = () => {
         e.preventDefault()
         setFilter(e.target.value);
     }
-    const url = `group-study-server-rho.vercel.app/assignment/${filter}`
+    const url = `https://group-study-server-rho.vercel.app/assignment/${filter}`
     useEffect(() => {
-        axios.get(url, {withCredentials:true})
+        axios.get(url)
             .then(res => setAllAssignment(res.data))
             .catch(err => console.log(err))
     }, [url])
