@@ -26,14 +26,14 @@ const CreateAssignment = () => {
         const email= user.email
         const data={title,description,mark,thumbnail,due: startDate,difficulty: selectedValue,createdBy:email} 
         
-        axios.post('http://localhost:5000/add-assignment',data)
+        axios.post('https://group-study-server-rho.vercel.app/add-assignment',data)
         .then(res=> {
             console.log(res.data)
-            toast.success("Assignment Added Successfully!")
+            toast.success("Assignment Added successfully!")
         })
         .catch(err=> {
-            toast.error(err.message)
-            console.log(err.message)})
+            toast.error(err.response.data.message)
+           })
        
     }
     return (
@@ -69,8 +69,9 @@ const CreateAssignment = () => {
                                     <span className="label-text ">Difficulty Level</span>
                                 </label>
                                 <select className="input input-bordered w-full" value={selectedValue} onChange={handleDropdownChange}>
-                                  
+                                <option>Select Difficulty Level</option>
                                     {dropdownValues.map((value, index) => (
+                                       
                                         <option key={index} value={value}>
                                             {value}
                                         </option>

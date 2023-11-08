@@ -31,7 +31,7 @@ const UpdateAssignment = () => {
         const email= user.email
         const data={title,description,mark,thumbnail,due: startDate,difficulty: selectedValue,createdBy:email} 
         console.log(data)
-        axios.put(`http://localhost:5000/updated-assignment/${_id}`,data)
+        axios.put(`https://group-study-server-rho.vercel.app/updated-assignment/${_id}`,data)
         .then(res=>{
             console.log(res)
             toast.success("Assignment Updated Successfully!")

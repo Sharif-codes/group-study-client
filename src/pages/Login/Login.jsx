@@ -28,7 +28,7 @@ const Login = () => {
                     toast.success('user logged in successfully', { id: toastId })
                     console.log(res)
                     const user = { email }
-                    axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    axios.post('https://group-study-server-rho.vercel.app/jwt', user, { withCredentials: true })
                         .then(res => {
                             console.log(res.data)
                             if (res.data.success) {
@@ -48,15 +48,17 @@ const Login = () => {
         }
     }
     const handleGoogleLogin = () => {
+        const toastId = toast.loading('Logging in')
         signInWithPopup(auth, provider)
             .then(result => {
                 console.log(result)
+                toast.success('user logged in successfully', { id: toastId })
                 navigate(location?.state ? location.state : '/')
                 
             })
             .catch(err => {
                 console.log(err)
-               
+                toast.error(err.message, { id: toastId })
             })
     }
     return (

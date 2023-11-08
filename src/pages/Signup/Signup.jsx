@@ -3,11 +3,12 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 import { getAuth, updateProfile } from "firebase/auth";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import app from "../../../firebase.config";
 
 const auth= getAuth(app)
 const Signup = () => {
+    const navigate=useNavigate()
     const {createUser}= useContext(AuthContext)
     const handleSignup= e=>{
         e.preventDefault()
@@ -30,6 +31,7 @@ const Signup = () => {
                     console.log(error)
                   });
                   toast.success('user registered successfully',{id: toastId})
+                  navigate('/')
             })
             .catch(err=>{
             toast.error(err.message, {id: toastId})

@@ -17,13 +17,12 @@ const SingleAssignment = () => {
     const data = { email, _id }
     const selected = { data }
     const handleDelete = () => {
-        axios.delete(`http://localhost:5000/delete-assignment`, selected)
+        axios.delete(`https://group-study-server-rho.vercel.app/delete-assignment`, selected)
             .then(res => {
 
                 toast.success(res.data.message)
                 setAssignment('')
-
-
+                navigate('/all-assignments')
             })
             .catch(err => {
                 toast.error(err.response.data.message)
@@ -44,7 +43,7 @@ const SingleAssignment = () => {
         const data= {pdf, note, examineeEmail,examineeName,status,title,assignmentMark:mark}
         console.log('asignment data: ', data)
 
-        axios.post('http://localhost:5000/submit-assignment',data)
+        axios.post('https://group-study-server-rho.vercel.app/submit-assignment',data)
          .then(res=> {
             console.log(res.data)
             toast.success("Assignment submitted Successfully!")
@@ -71,7 +70,7 @@ const SingleAssignment = () => {
                             <p>Due: <span className="font-semibold">{due}</span></p>
                             <p>Mail Creator: <span className="font-semibold">{createdBy}</span></p>
                             <div className="flex gap-3 pt-5">
-                                <button className="btn btn-primary" onClick={() => document.getElementById('my_modal_3').showModal()}>Take Assignment</button>
+                                <button className="btn btn-success text-white" onClick={() => document.getElementById('my_modal_3').showModal()}>Take Assignment</button>
                                 <dialog id="my_modal_3" className="modal">
                                     <div className="modal-box">
                                         <form method="dialog">

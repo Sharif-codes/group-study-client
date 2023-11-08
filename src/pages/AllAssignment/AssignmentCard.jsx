@@ -15,7 +15,7 @@ const AssignmentCard = ({assignments}) => {
                     <p>Marks: <span className="font-semibold">{mark}</span> </p>
                     <p>Due: <span className="font-semibold">{due}</span></p>
                     <div className="flex gap-5">
-                        <Link to={`/single-assignment/${_id}`}><button className="btn btn-accent">View </button></Link>
+                        <Link to={`/single-assignment/${_id}`}><button className="btn btn-accent text-white">View </button></Link>
                         
                        <Link to={`/update-assignment/${_id}`}><button className="btn btn-secondary">Update</button></Link> 
                     </div>

@@ -6,7 +6,6 @@ import { Tooltip } from "@mui/material";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
-    const [isHover, setIsHover] = useState(false)
     console.log(user)
     const handleLogout = () => {
         logOut()
@@ -73,7 +72,7 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <Link to='/' className="flex items-center gap-3"><span className="text-3xl font-bold text-red-500">Group Study</span></Link>
+                <Link to='/' className="flex items-center gap-3"><span className="text-lg md:text-3xl font-bold text-red-500">Group Study</span></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -121,7 +120,7 @@ const Navbar = () => {
                 <div>
 
                     {
-                        user ? <button onClick={handleLogout} className="btn btn-primary">Logout</button> : <Link to='/login'><button className="btn btn-primary">Login</button></Link>
+                        user ? <button onClick={handleLogout} className="btn btn-secondary text-white">Logout</button> : <Link to='/login'><button className="btn btn-success text-white">Login</button></Link>
                     }
                 </div>
             </div>

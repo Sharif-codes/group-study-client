@@ -10,6 +10,8 @@ import AllAssignment from "../pages/AllAssignment/AllAssignment";
 import SingleAssignment from "../pages/SingleAssignment/SingleAssignment";
 import UpdateAssignment from "../pages/UpdateAssignment/UpdateAssignment";
 import PrivateRoute from "./PrivateRoute";
+import GiveMark from "../pages/GiveMark/GiveMark";
+import Errorpage from "../pages/ErrorPage/Errorpage";
 
 
 const router = createBrowserRouter([
@@ -17,6 +19,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
+        errorElement: <Errorpage></Errorpage>,
         children: [
             {
                 index: true,
@@ -37,18 +40,23 @@ const router = createBrowserRouter([
             {
                 path: '/all-assignments',
                 element: <AllAssignment></AllAssignment>,
-                loader: ()=> fetch('http://localhost:5000/get-assignment')
+                loader: ()=> fetch('https://group-study-server-rho.vercel.app/get-assignment')
             },
             {
                 path: '/single-assignment/:id',
                 element: <PrivateRoute><SingleAssignment></SingleAssignment></PrivateRoute> ,
-                loader: ({params})=> fetch(`http://localhost:5000/single-assignment/${params.id}`)
+                loader: ({params})=> fetch(`https://group-study-server-rho.vercel.app/single-assignment/${params.id}`)
 
             },
             {
                 path: '/update-assignment/:id',
                 element: <PrivateRoute><UpdateAssignment></UpdateAssignment></PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:5000/update-assignment/${params.id}`)
+                loader: ({params})=> fetch(`https://group-study-server-rho.vercel.app/update-assignment/${params.id}`)
+            },
+            {
+                path: '/give-mark/:id',
+                element: <PrivateRoute><GiveMark></GiveMark></PrivateRoute>,
+                loader: ({params})=> fetch(`https://group-study-server-rho.vercel.app/give-mark/${params.id}`)
             }
         ]
     },

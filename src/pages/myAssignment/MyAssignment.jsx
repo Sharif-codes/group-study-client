@@ -9,7 +9,7 @@ const MyAssignment = () => {
     const email= user.email
     const [assignments, setAssignment]= useState([])
     useEffect(()=>{
-        axios.get(`http://localhost:5000/get-submitted-assignment/${email}`)
+        axios.get(`https://group-study-server-rho.vercel.app/get-submitted-assignment/${email}`)
         .then(res=> setAssignment(res.data))
         .catch(err=> console.error(err))
     })
