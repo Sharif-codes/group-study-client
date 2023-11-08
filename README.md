@@ -1,8 +1,11 @@
-# React + Vite
+# Live link of client side
+https://group-study-10c82.web.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Features of this project
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Any visitor can see all the posted assignment.
+- User can register and login to the system.
+- Any valid user can create assignment, but only the author of the assignment can delete his or her created assignment.
+- A valid user can Take assignment and submit the Answer script as pdf link
+- Examiner can see the pending assignment and mark the assignment by seeing the pdf preview and also can give feedback.
+- Examinee can see his mark and examiner feedback.
