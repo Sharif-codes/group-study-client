@@ -7,8 +7,9 @@ import axios from "axios";
 
 
 
+
 const SingleAssignment = () => {
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     const { user } = useContext(AuthContext)
     const singleAssignment = useLoaderData()
     const [assignment, setAssignment] = useState(singleAssignment)
@@ -34,24 +35,25 @@ const SingleAssignment = () => {
     const handleSubmit = e => {
         e.preventDefault()
         const form = e.target
-        const pdf= form.pdf.value
-        const note= form.note.value
-        const examineeName= user.displayName
-        const examineeEmail= user.email
-        const status= "pending"
+        const pdf = form.pdf.value
+        const note = form.note.value
+        const examineeName = user.displayName
+        const examineeEmail = user.email
+        const status = "pending"
 
-        const data= {pdf, note, examineeEmail,examineeName,status,title,assignmentMark:mark}
+        const data = { pdf, note, examineeEmail, examineeName, status, title, assignmentMark: mark }
         console.log('asignment data: ', data)
 
-        axios.post('https://group-study-server-rho.vercel.app/submit-assignment',data)
-         .then(res=> {
-            console.log(res.data)
-            toast.success("Assignment submitted Successfully!")
-            navigate('/all-assignments')
-        })
-        .catch(err=> {
-            toast.error(err.message)
-            console.log(err.message)})
+        axios.post('https://group-study-server-rho.vercel.app/submit-assignment', data)
+            .then(res => {
+                console.log(res.data)
+                toast.success("Assignment submitted Successfully!")
+                navigate('/all-assignments')
+            })
+            .catch(err => {
+                toast.error(err.message)
+                console.log(err.message)
+            })
     }
 
     return (
@@ -70,11 +72,13 @@ const SingleAssignment = () => {
                             <p>Due: <span className="font-semibold">{due}</span></p>
                             <p>Mail Creator: <span className="font-semibold">{createdBy}</span></p>
                             <div className="flex gap-3 pt-5">
+
                                 <button className="btn btn-success text-white" onClick={() => document.getElementById('my_modal_3').showModal()}>Take Assignment</button>
+                                
                                 <dialog id="my_modal_3" className="modal">
                                     <div className="modal-box">
                                         <form method="dialog">
-                                            {/* if there is a button in form, it will close the modal */}
+
                                             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                         </form>
                                         {/* submit pdf abd note of the exanineee */}

@@ -3,15 +3,15 @@ import AssignmentCard from "./AssignmentCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+
 const AllAssignment = () => {
     const [allAssignment, setAllAssignment] = useState([]);
     const [count, setCountItem] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(6);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(0);
     const [filteredData, setFilteredData] = useState([]);
     const [filter, setFilter] = useState('');
 
-    console.log(count);
     const numberOfPages = Math.ceil(count / itemsPerPage);
     const pages = [...Array(numberOfPages).keys()];
 

@@ -39,10 +39,10 @@ const CreateAssignment = () => {
     return (
         <div>
             <div className="bg-[#F4F3F0] ">
-            <h2 className="text-4xl pt-5 text-center font-bold text-purple-800">Create an assignment</h2>
+            <h2 className="md:text-4xl text-2xl pt-5 text-center font-bold text-purple-800">Create an assignment</h2>
                 <form onSubmit={handleAddAssignment}>
                 
-                    <div className="py-10 px-24 space-y-4">
+                    <div className="py-10 md:px-24 px-10 space-y-4">
                         <div className="flex gap-4 w-full pb-4">
                             <div className="form-control w-1/2">
                                 <label className="label">

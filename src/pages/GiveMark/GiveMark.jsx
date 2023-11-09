@@ -1,9 +1,6 @@
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import PdfPreview from "./PdfPreview";
-import { Document, Page } from 'react-pdf';
-import { useState } from "react";
 
 const GiveMark = () => {
     const navigate = useNavigate()
@@ -20,24 +17,11 @@ const GiveMark = () => {
             .then(res => {
                 console.log(res.data)
                 toast.success('Marks submitted savedsuccesfully')
-                navigate("/")
+                navigate("/all-assignments")
             })
             .catch(err => console.log(err))
     }
-    const [numPages, setNumPages] = useState(null);
-    const [pageNumber, setPageNumber] = useState(1);
-
-    const onDocumentLoadSuccess = ({ numPages }) => {
-        setNumPages(numPages);
-    };
-
-    const goToPrevPage = () => {
-        setPageNumber((prevPageNumber) => prevPageNumber - 1);
-    };
-
-    const goToNextPage = () => {
-        setPageNumber((prevPageNumber) => prevPageNumber + 1);
-    };
+    
     console.log(pdf ? pdf : '')
     return (
         <div>
@@ -47,20 +31,7 @@ const GiveMark = () => {
                 <div className="my-2">
                     <p className="text-center font-semibold text-lg ">Answer Script:</p>
                     <div>
-                        {/* <nav>
-                            <button onClick={goToPrevPage}>Prev</button>
-                            <button onClick={goToNextPage}>Next</button>
-                        </nav>
-
-                        <div style={{ width: 600 }}>
-                            <Document file="https://www.africau.edu/images/default/sample.pdf" onLoadSuccess={onDocumentLoadSuccess}>
-                                <Page pageNumber={pageNumber} width={600} />
-                            </Document>
-                        </div>
-
-                        <p>
-                            Page {pageNumber} of {numPages}
-                        </p> */}
+                        
                         <iframe
                             title="PDF Viewer"
                             src={pdf}

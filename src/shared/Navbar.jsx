@@ -14,7 +14,7 @@ const Navbar = () => {
         <NavLink
             to="/create-assignments"
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "active text-green-500" : ""
+                isPending ? "pending" : isActive ? "active bg-green-500 text-white rounded-md" : ""
             }
         >
             <li><a> Create Assignments</a></li>
@@ -22,7 +22,7 @@ const Navbar = () => {
         <NavLink
             to="/my-assignments"
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "active text-green-500" : ""
+                isPending ? "pending" : isActive ? "active bg-green-500 text-white rounded-md" : ""
             }
         >
             <li><a>My Assignments</a></li>
@@ -30,7 +30,7 @@ const Navbar = () => {
         <NavLink
             to="/submitted-assignments"
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "active text-green-500" : ""
+                isPending ? "pending" : isActive ? "active bg-green-500 text-white rounded-md" : ""
             }
         >
             <li><a>Submitted Assignments</a></li>
@@ -48,7 +48,7 @@ const Navbar = () => {
                         <NavLink
                             to="/all-assignments"
                             className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "active text-green-500" : ""
+                                isPending ? "pending" : isActive ? "active bg-green-500 text-white rounded-md" : ""
                             }
                         >
                             <li><a>All Assignments</a></li>
@@ -56,7 +56,7 @@ const Navbar = () => {
                         <NavLink
                             to="/login"
                             className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "active text-green-500" : ""
+                                isPending ? "pending" : isActive ? "active bg-green-500 text-white rounded-md" : ""
                             }
                         >
                             <li><a href="">Login</a></li>
@@ -64,7 +64,7 @@ const Navbar = () => {
                         <NavLink
                             to="/signup"
                             className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "active text-green-500" : ""
+                                isPending ? "pending" : isActive ? "active bg-green-500 text-white rounded-md" : ""
                             }
                         >
                             <li><a href="">Register</a></li>
@@ -84,7 +84,7 @@ const Navbar = () => {
                     <NavLink
                         to="/all-assignments"
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "active text-green-500" : ""
+                            isPending ? "pending" : isActive ? "active bg-green-500 text-white rounded-md" : ""
                         }
                     >
                         <li><a>All Assignments</a></li>
@@ -92,7 +92,7 @@ const Navbar = () => {
                     <NavLink
                         to="/login"
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "active text-green-500" : ""
+                            isPending ? "pending" : isActive ? "active bg-green-500 text-white rounded-md" : ""
                         }
                     >
                         <li><a href="">Login</a></li>
@@ -100,7 +100,7 @@ const Navbar = () => {
                     <NavLink
                         to="/signup"
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "active text-green-500" : ""
+                            isPending ? "pending" : isActive ? "active bg-green-500 text-white rounded-md" : ""
                         }
                     >
                         <li><a href="">Register</a></li>
@@ -116,10 +116,7 @@ const Navbar = () => {
                             </Tooltip>
 
                         </div>
-
                     }
-
-
                 </div>
                 <div>
 

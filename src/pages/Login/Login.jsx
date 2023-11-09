@@ -83,8 +83,9 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <button type="submit" className="btn btn-primary">Login</button>
                         </div>
-                        <p>Dont have account?</p> <Link to='/signup' className="text-purple-800">Sign up</Link>
+                        <p className="text-center">or <Link to='/signup' className="text-purple-800 font-semibold">Sign up</Link> </p>
                     </form>
+                    <p className="text-center mb-2 font-semibold ">Login With Google</p>
                     <button onClick={handleGoogleLogin} className="btn btn-outline mx-auto w-1/2 mb-4">
                             <FaGoogle></FaGoogle>
                             Google

@@ -19,13 +19,13 @@ const Home = () => {
             </div>
             <section className="my-10">
                 <p className="text-4xl text-pink-700 font-bold pb-10">Features</p>
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
-                {
-                    feature?.map(item=> <FeatureCard key={item.id} feature={item}></FeatureCard> )
-                }
-            </div>
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
+                    {
+                        feature?.map(item => <FeatureCard key={item.id} feature={item}></FeatureCard>)
+                    }
+                </div>
             </section>
-            
+
             <section>
                 <h2 className="text-4xl text-pink-700 font-bold pb-10">Most Frequent Questions</h2>
                 <div className="collapse collapse-arrow bg-base-200">
