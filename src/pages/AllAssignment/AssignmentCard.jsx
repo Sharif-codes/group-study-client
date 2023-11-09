@@ -5,9 +5,6 @@ import { Link } from "react-router-dom";
 
 const AssignmentCard = ({ assignments }) => {
     const { _id, title, description, mark, difficulty, due, thumbnail, createdBy } = assignments
-   
-  
-
     return (
         <div className="card w-96 bg-base-100 shadow-xl mx-auto">
             <figure className="h-64"><img className="h-72 w-full" src={thumbnail} alt="Shoes" /></figure>
