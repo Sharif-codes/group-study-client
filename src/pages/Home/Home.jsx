@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import FeatureCard from "./FeatureCard";
+import Contact from "./Contact";
 
 const Home = () => {
     const feature = useLoaderData()
@@ -55,6 +56,18 @@ const Home = () => {
                         <p>Ofcourse! you will get</p>
                     </div>
                 </div>
+            </section>
+            <section className="mx-auto space-y-5 text-center">
+                <h2 className="text-3xl text-blue-700 font-bold pb-5">Give feedback</h2>
+                <div className="hero min-h-screen bg-base-200">
+                    <div className="hero-content flex-col lg:flex-row-reverse">
+
+                        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                            <Contact></Contact>
+                        </div>
+                    </div>
+                </div>
+
             </section>
         </div>
     );

@@ -8,12 +8,12 @@ const AllAssignment = () => {
     const [allAssignment, setAllAssignment] = useState([]);
     const [count, setCountItem] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(6);
-    const [currentPage, setCurrentPage] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
     const [filteredData, setFilteredData] = useState([]);
     const [filter, setFilter] = useState('');
 
     const numberOfPages = Math.ceil(count / itemsPerPage);
-    const pages = [...Array(numberOfPages).keys()];
+    const pages = [...Array(numberOfPages).keys()].map(page=> page+1)
 
     const dropdownValues = ['Easy', 'Medium', 'Hard'];
 
@@ -46,7 +46,7 @@ const AllAssignment = () => {
     }
 
     const handlePrevPage = () => {
-        if (currentPage > 0) {
+        if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
         }
     }
@@ -84,7 +84,6 @@ const AllAssignment = () => {
                 {
                     pages.map(page => <button
                         className={currentPage === page ? 'underline text-green-500' : undefined}
-
                         onClick={() => setCurrentPage(page)}
                         key={page}>{page}</button>)
                 }
