@@ -5,9 +5,6 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
 
-
-
-
 const SingleAssignment = () => {
     const navigate = useNavigate()
     const { user } = useContext(AuthContext)
@@ -81,7 +78,7 @@ const SingleAssignment = () => {
 
                                             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                         </form>
-                                        {/* submit pdf abd note of the exanineee */}
+                                        {/* submit pdf abd note of the examinee */}
 
                                         <div className="mx-auto flex justify-center">
                                             <form onSubmit={handleSubmit}>
@@ -91,16 +88,11 @@ const SingleAssignment = () => {
                                                 <input type="text" name="note" placeholder="Type quick note.." className="input input-bordered input-secondary w-full max-w-xs" />
                                                 <input className="btn btn-success text-white mt-5" type="submit" value="submit" />
                                             </form>
-
                                         </div>
                                     </div>
                                 </dialog>
-
-
-
                                 <button onClick={handleDelete} className="btn btn-secondary">Delete Assignment</button>
                             </div>
-
                         </div>
                     </div>
                 </div>

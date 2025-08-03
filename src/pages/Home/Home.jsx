@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import FeatureCard from "./FeatureCard";
 import Contact from "./Contact";
 
@@ -6,20 +6,19 @@ const Home = () => {
     const feature = useLoaderData()
     return (
         <div className="space-y-10">
-
-
-            <div className="hero min-h-[80vh]" style={{ backgroundImage: 'url(https://freerangestock.com/sample/148004/a-happy-group-of-young-people-studying-for-exams.jpg)' }}>
-                <div className="hero-overlay bg-opacity-60"></div>
+            <div className="hero min-h-[90vh] rounded-xl" style={{ backgroundImage: 'url(https://freerangestock.com/sample/148004/a-happy-group-of-young-people-studying-for-exams.jpg)'}}>
+                <div className="hero-overlay bg-opacity-60 rounded-xl"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
-                        <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                        <p className="mb-5">Welcome to our Study group website.</p>
-                        <button className="btn btn-secondary">Explore more</button>
+                        <h1 className="mb-5 text-2xl font-bold">Welcome to our Study group website.</h1>
+                        <p className="mb-5"></p>
+                        <Link to="/my-assignments"><button className="btn btn-secondary text-sm">My Assignment</button></Link>
                     </div>
+
                 </div>
             </div>
-            <section className="my-10">
-                <p className="text-4xl text-pink-700 font-bold pb-10">Features</p>
+            <section className="my-10 w-full">
+                <p className="text-2xl md:text-4xl flex justify-center text-pink-700 font-bold pb-10">Features</p>
                 <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                     {
                         feature?.map(item => <FeatureCard key={item.id} feature={item}></FeatureCard>)
@@ -27,8 +26,8 @@ const Home = () => {
                 </div>
             </section>
 
-            <section>
-                <h2 className="text-4xl text-pink-700 font-bold pb-10">Most Frequent Questions</h2>
+            <section className="w-full">
+                <h2 className="text-2xl md:text-4xl w-full flex justify-center text-pink-700 font-bold pb-10">Most Frequent Questions</h2>
                 <div className="collapse collapse-arrow bg-base-200">
                     <input type="radio" name="my-accordion-2" checked="checked" />
                     <div className="collapse-title text-xl font-medium">
